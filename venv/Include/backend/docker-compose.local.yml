@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  vending-api:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    command: python app/application.py
+    image: fondleaderbot-api
+    container_name: fondleaderbot-api
+    restart: always
+    env_file:
+      - ".env"
+    volumes:
+      - ./logs:/app/logs
+    network_mode: "host"
